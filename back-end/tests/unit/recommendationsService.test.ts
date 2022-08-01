@@ -82,9 +82,9 @@ describe("recommendation", () => {
         });
         jest.spyOn(recommendationRepository, "findAll").mockImplementationOnce((): any => {
             return [
-                { id: 1, name: 'xuxa so para baixinhos 5', youtubeLink: '', score: 3 },
-                { id: 2, name: 'jojo bizarres adventures op 6', youtubeLink: '', score: 2 },
-                { id: 3, name: 'Felipe Dilon, só as melhores', youtubeLink: '', score: 1 },
+                { id: 1, name: 'xuxa so para baixinhos 5', youtubeLink: 'https://www.youtube.com/watch?v=lKDwS2hnQ24', score: 3 },
+                { id: 2, name: 'jojo bizarres adventures op 6', youtubeLink: 'https://www.youtube.com/watch?v=lKDwS2hnQ24', score: 2 },
+                { id: 3, name: 'Felipe Dilon, só as melhores', youtubeLink: 'https://www.youtube.com/watch?v=lKDwS2hnQ24', score: 1 },
             ];
         });
         const recommendation = await recommendationService.getRandom();
