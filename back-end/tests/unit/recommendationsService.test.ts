@@ -76,4 +76,23 @@ describe("recommendation", () => {
         expect(recommendationRepository.getAmountByScore).toBeCalled();
     })
 
+    it("get random recommentation", async () => {
+        jest.spyOn(Math, "random").mockImplementationOnce((): any => {
+            return 0.5;
+        });
+        jest.spyOn(recommendationRepository, "findAll").mockImplementationOnce((): any => {
+            return [
+                { id: 1, name: 'xuxa so para baixinhos 5', youtubeLink: '', score: 3 },
+                { id: 2, name: 'jojo bizarres adventures op 6', youtubeLink: '', score: 2 },
+                { id: 3, name: 'Felipe Dilon, só as melhores', youtubeLink: '', score: 1 },
+            ];
+        });
+        const recommendation = await recommendationService.getRandom();
+        expect(recommendationRepository.findAll).toHaveBeenCalled();
+        expect(recommendation).not.toBeNull;
+        expect(recommendation).not.toBeUndefined;
+    });
+
+
+
 })
